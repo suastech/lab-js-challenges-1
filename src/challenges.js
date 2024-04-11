@@ -93,14 +93,12 @@ function uniquifyArray(array) {
   let evaluation= newArray.indexOf(array[i])
   if (evaluation === -1) {
     newArray.push(array[i])
-    
+
   }
   
  }
   return newArray
 }
-
-
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
 const matrix = [
@@ -126,4 +124,42 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(array) {
+  let horizontalLength = array[0].length;
+  let verticalLength = array.length;
+  let result = 0;
+
+  //Horizontal
+  for (row of array) {
+    let largestLine= 0;
+      for (let i = 0; i <= horizontalLength - 4; i++) {    
+
+        let product = row[i] * row[i+1] * row[i+2] * row[i+3]
+        
+        if (product > largestLine) {
+          largestLine = product;
+        }
+      }
+    if (largestLine > result) {
+      result = largestLine
+    }
+  }
+  //Vertical
+  for (let columnNumber = 0; columnNumber < horizontalLength; columnNumber++) {
+   let largestLine = 0;
+
+    for ( let rowNumber = 0; rowNumber <= verticalLength - 4; rowNumber++) {
+        let product = array[rowNumber][columnNumber] * array[rowNumber +1][columnNumber] * array[rowNumber+2][columnNumber] * array[rowNumber+3][columnNumber];
+        if  (product > largestLine)
+          { largestLine = product}
+      }
+
+   if (largestLine > result) {
+      result = largestLine;
+   }
+  }
+return result;
+
+}
+
+console.log(greatestProduct(matrix))
