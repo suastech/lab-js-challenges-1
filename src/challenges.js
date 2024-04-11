@@ -17,7 +17,7 @@ function howManyTimes(array, word) {
   let counter= 0;
   for (element of array) {
     if (word === element) {
-      counter +++
+      counter ++
     } 
   }
   return counter
